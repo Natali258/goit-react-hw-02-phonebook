@@ -1,6 +1,6 @@
-import s from './Search.module.css';
+import s from './Filter.module.css';
 
-export const Search = ({ filter }) => {
+export const Filter = ({ filter }) => {
   return (
     <div className={s.search}>
       <span className={s.label}>Find contacts by name</span>
