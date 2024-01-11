@@ -1,10 +1,8 @@
-import { Filter } from 'components/Filter/Filter';
 import s from './Contacts.module.css';
 
-export const Contacts = ({ contacts, deleteContact, saveFilter }) => {
+export const Contacts = ({ contacts, deleteContact }) => {
   return (
     <div>
-      <Filter filter={saveFilter} />
       <ul className={s.contactsList}>
         {contacts.map(contact => (
           <li className={s.contactLi} key={contact.id}>

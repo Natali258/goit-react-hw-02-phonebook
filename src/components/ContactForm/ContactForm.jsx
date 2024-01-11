@@ -6,28 +6,23 @@ export class ContactForm extends React.Component {
     name: '',
     number: '',
   };
-  handleChangeInput = e => {
-    console.log(e);
-    if (e.target.name === 'name') {
-      this.setState({ name: e.target.value });
-    }
-    if (e.target.name === 'number') {
-      this.setState({ number: e.target.value });
-    }
+  handleChangeInput = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
   };
 
-  saveContact = () => {
-    console.log(this.state.name);
+  saveContact = e => {
+    e.preventDefault();
     this.props.addContacts({
       name: this.state.name,
       number: this.state.number,
     });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
     return (
       <div>
-        <form className={s.forma}>
+        <form onSubmit={this.saveContact} className={s.forma}>
           <span className={s.label}>Name</span>
           <input
             value={this.state.name}
@@ -46,7 +41,7 @@ export class ContactForm extends React.Component {
             required
             className={s.input}
           />
-          <button onClick={this.saveContact} type="submit" className={s.dtnAdd}>
+          <button type="submit" className={s.dtnAdd}>
             Add contact
           </button>
         </form>
